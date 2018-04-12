@@ -29,13 +29,19 @@ void my_print_array(int test_index, int arr[], int arr_size)
 // max_hit, return the last index of maximum hit
 // width defined the hammer size
 //
-int max_hit(int arr[], int arr_size, int width)
+// return -1, if no hit found
+//
+int max_hit(int *arr, int arr_size, int width)
 {
     int i;
     int max_hit_var = 0;
     int count = 0;
     int start_index = 0;
     int last_max_hit_var = 0;
+
+    if (arr_size == 0 || arr == NULL) {
+       return -1;
+    }
 
     for (i=0; i<arr_size; i++) {
         if (arr[i] == 1) {
@@ -58,7 +64,7 @@ int max_hit(int arr[], int arr_size, int width)
         //      i, max_hit_var, start_index, count);
     }
 
-    return (count == 0) ? 0 : start_index + 1; // 1 based number
+    return (count == 0) ? -1 : start_index + 1; // 1 based number
 }
 
 int main()
